@@ -350,7 +350,7 @@ The image below shows the *CerebellarLayerView* window, which can be used to vis
 -   Alt + left click in a square: If the cluster was not selected, it will be selected together with already selected clusters. If the cluster was selected, it will be deselected.
 -   Alt + right click in square: This option is equivalent to “Alt + left click”, but the data for the selected cluster is not immediately updated in the analysis windows. The analysis windows are updated when the “Alt + left click” function is used. This option is very useful when the user wants to select or deselect multiple units without having to wait for all the windows to update with each new selection.
 
-![Phyllum CerebellarLayerView_lowres](https://hackmd.io/_uploads/By-pQjLo6.png)
+![Phyllum CerebellarLayerView_lowres](https://github.com/blinklab/Phyllum_public/assets/4985110/ec03f8eb-6e11-4a20-b469-01e9d24a7837)
 
 
 ### Menu functions related to the *CerebellarLayerView* window:
