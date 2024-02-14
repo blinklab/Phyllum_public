@@ -162,7 +162,7 @@ https://drive.google.com/file/d/1dnwbfNaofpuaoEPlhY90vSiBP5Jndjyu/view?usp=shari
 # Phyllum GUI
 The image below shows the *Phyllum* GUI in 'Advanced' mode. In addition to all the normal [*phy*](https://github.com/cortex-lab/phy) fuctionality, the 'Advanced' *Phyllum* GUI has extra menus for: (1) Curating, (2) Searching cells by crosscorrelogram/connectivity patterns, (3) Searching cells by activity-related features, and (4) Exporting analysis windows in multiple vectorial/lossless formats. The GUI also incorporates a new *CerebellarLayerView* window (highlighted in the image below with rectangle #2), which can be used to visualize the location of all the recorded neurons along the length of the probe and the specific layer of cerebellar cortex assigned to each.  
 
-![Phyllum GUI-lowres](https://hackmd.io/_uploads/B1JRb7SoT.jpg)
+![Phyllum GUI_lowres](https://github.com/blinklab/Phyllum_public/assets/4985110/14839ebf-53f0-4107-9bfb-f947cc2f55f4)
 
 
 
@@ -181,7 +181,7 @@ The image below shows the *Phyllum* GUI in 'Advanced' mode. In addition to all t
 ## Merge clusters 
 Automatic sorting can sometimes produce 'oversplitting', i.e. dividing the spikes belonging to a single unit among 2 or more separate clusters. For example, in the image below, *Kilosort* has separated the spikes belonging to a single unit into 3 separate groups (blue, red and green) and assigned each group of spikes to a different cluster ('Unit 1', 'Unit 2', and 'Unit 3'). During the curating process, it is necessary to identify 'oversplit' clusters and merge them together so that their spikes are all attributed to one single unit (see black histogram).
 
-![Phyllum Merge_lowres](https://hackmd.io/_uploads/S1Q2LQrip.png)
+![Phyllum Merge_lowres](https://github.com/blinklab/Phyllum_public/assets/4985110/9051bc21-aaef-425d-8d7e-b6376f4d93d9)
 
 
 *Phyllum* allows the user to automatize some of the steps in the manual process for merging clusters proposed in the [*phy* Clustering Guide](https://phy.readthedocs.io/en/latest/sorting_user_guide/#user-guide), using the functions described below. Briefly, the user is able to quickly identify clusters that are 'oversplit' and are candidates for 'merge' by searching neighboring channels for clusters with similar mean waveforms, templates, and correlograms (see example of template and autocorrelogram similarity for the 3 clusters in the figure above). For clusters selected for 'merge', *Phyllum* has options for removing duplicated spikes and doing waveform realignment. The user can choose different functions to run the steps of the 'merge' process either automatically or with manual supervision.
@@ -211,7 +211,7 @@ Automatic sorting can sometimes produce 'oversplitting', i.e. dividing the spike
 The image below illustrates a common sorting problem for Purkinje cells, in which the spikelets of a complex spike (Cspk, indicated in red) are incorrectly assigned as simple spikes (SS, indicated in blue). *Phyllum* can detect this sorting error by examining the Cspk vs SS crosscorrelogram (CCG) of individual Purkinje cells. Instead of the well-known suppression of simple spikes that is always observed in the 10 ms after a complex spike, the CCG of an incorrectly sorted Purkinje cell will show spikelet contamination, i.e. the presence of simple spikes in the 5 ms following the complex spike. *Phyllum* can reduce contamination by performing a 'split' and moving spikes from spikelets into their own cluster.
 
 
-![Phyllum Spikelet Removal_lowres](https://hackmd.io/_uploads/rk24o7rip.png)
+![Phyllum Spikelet Removal_lowres](https://github.com/blinklab/Phyllum_public/assets/4985110/5f0a3fa1-39d8-4781-9d94-a6ab17c5e98f)
 
 
 
@@ -290,7 +290,7 @@ The following metrics are computed automatically for each cluster in which *good
 
 To identify 'anchors', *Phyllum* uses 3 separate Uniform Approximation and Projection (UMAP) and Gaussian Process classifiers trained with expert-labelled units in the *Phyllum* repository, which come from Neuropixels recordings in the mouse cerebellar cortex like the one shown in the image below. In these recordings, the 3 'anchor' types can be unambiguously identified: (1) MFB's shown in cyan have a unique triphasic waveform and can fire spikes in high frequency bursts of up to 1KHz, (2) DCS's shown in orange have a wide waveform and a low and irregular firing rate in the 1-2 Hz range, and (3) somatic PC_SS's shown in magenta have a negatively-peaked waveform and high firing rates of >40 Hz, which are interrupted briefly by complex spikes (Cspk), resulting in a Cspk-triggered pause of simple spikes (see arrowheads in the magenta crosscorrelograms of the image below). 
 
-![Phyllum Anchors_lowres](https://hackmd.io/_uploads/ryQ638Bjp.png)
+![Phyllum Anchors_lowres](https://github.com/blinklab/Phyllum_public/assets/4985110/b14a5f14-2ce7-4629-88fa-294f21f11c10)
 
 
 The probability that each cluster with *good_SNR*='True' is one of the 3 'anchor' types is computed by projecting the cluster metrics onto the 2D spaces of the 3 UMAP/Gaussian process classifiers: (1) MFB vs non-MFB space, (2) DCS vs non-DCS space, and (3) PC_SS vs non-PC_SS space. To be identified as an 'anchor', a cluster must have a probability of at least 70% for one specific 'anchor' type (and less than 30% for the other 2 'anchor' types), plus it must also pass a final set of sanity checks to make sure that the cluster metrics are within the known physiological range. In the case of PC_SS 'anchors' it is also necessary to exclude clusters that correspond to non-somatic Purkinje cell simple spikes, something that *Phyllum* achieves by checking the initial component of the waveform and excluding clusters with any signs of a small positivity before the main negative peak. It is important to note that *Phyllum*'s layer ID algorithm performs well even if not all MFB and DCS 'anchor' units are detected; on the other hand, detecting somatic PC_SS 'anchor' units is critical.
@@ -299,7 +299,7 @@ The probability that each cluster with *good_SNR*='True' is one of the 3 'anchor
 ### Step 2: Assign layer ID to probe channels
 The image below illustrates the procedure that *Phyllum* follows to assign a layer ID, either granule cell layer (GCL), molecular layer (ML), or Purkinje cell layer (PCL), to the different channels on the recording probe.
 
-![Phyllum Layer Autofill](https://hackmd.io/_uploads/B1ofgTYoa.jpg)
+![Phyllum Layer Autofill](https://github.com/blinklab/Phyllum_public/assets/4985110/0fdf23ae-a963-40f7-8fdc-439b665eb73f)
 
 
 **Step 2.1**: Contacts with a MFB 'anchor' unit are assigned to GCL.
@@ -324,7 +324,7 @@ The image below illustrates the procedure that *Phyllum* follows to assign a lay
 
 Assessing the performance of *Phyllum*'s Layer ID algorithm requires expert analysis of histological sections in which the trajectory of the Neuropixels probe is marked with a fluorescent dye during the recording experiment and accurately reconstructed and visualized postmortem under the microscope (see image below for 8 example histological sections of different regions of the cerebellar cortex with diverse layer organization, in which the GCL is deeply stained in cyan and the probe track is shown in red). Histological analysis of 21 Neuropixels probe tracks demonstrates that on average, *Phyllum*'s Layer ID assigns 82% of all the channels to a specific layer, and that the assignment is highly accurate: >99% correct for ML channels, >98% correct for GCL channels, and >95% for PCL channels. 
  
-![Phyllum Histology Validation_lowres](https://hackmd.io/_uploads/HJHi89Hop.jpg)
+![Phyllum Histology Validation_lowres](https://github.com/blinklab/Phyllum_public/assets/4985110/3b3e37c0-c695-405a-89d5-979ce21359e8)
 
 
 ## Layer information in *ClusterView* window
